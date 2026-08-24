@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#9b5b4d">
+  <meta name="description" content="Share your favorite photos from Courtney & Calen's wedding.">
+  <title>Courtney & Calen | Captured by You</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+
+  <style>
+    :root {
+      --cream: #f7f0e6;
+      --cream-deep: #eadfce;
+      --terracotta: #9b5b4d;
+      --terracotta-dark: #754338;
+      --rose: #c58b82;
+      --brown: #3d2b26;
+      --brown-soft: #6d5750;
+      --white: #fffaf3;
+      --line: rgba(61,43,38,.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--brown);
+      font-family: "DM Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100svh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .top {
+      min-height: 92svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 64px 24px 48px;
+      position: relative;
+    }
+
+    .top::before,
+    .top::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    .top::before {
+      width: 280px;
+      height: 280px;
+      right: -150px;
+      top: 90px;
+      background: rgba(197,139,130,.20);
+    }
+
+    .top::after {
+      width: 300px;
+      height: 300px;
+      left: -180px;
+      bottom: -80px;
+      background: rgba(155,91,77,.12);
+    }
+
+    .monogram {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(54px, 17vw, 92px);
+      line-height: .78;
+      letter-spacing: -.05em;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+
+    .date {
+      margin-top: 20px;
+      font-size: 12px;
+      letter-spacing: .30em;
+      text-transform: uppercase;
+      color: var(--brown-soft);
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin-top: 64px;
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--terracotta-dark);
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(48px, 13vw, 78px);
+      line-height: .92;
+      margin: 12px 0 18px;
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro {
+      max-width: 520px;
+      margin: 0 auto;
+      color: var(--brown-soft);
+      font-size: 16px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .upload-btn {
+      margin-top: 34px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--terracotta);
+      color: white;
+      padding: 17px 28px;
+      font: 600 12px "DM Sans", sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(117,67,56,.18);
+      transition: transform .2s ease, background .2s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .upload-btn:active { transform: translateY(1px) scale(.99); }
+    .upload-btn:hover { background: var(--terracotta-dark); }
+
+    .hint {
+      margin-top: 13px;
+      font-size: 12px;
+      color: var(--brown-soft);
+      position: relative;
+      z-index: 1;
+    }
+
+    .divider {
+      width: 42px;
+      height: 1px;
+      background: var(--rose);
+      margin: 12px auto 0;
+    }
+
+    .story {
+      background: var(--white);
+      padding: 72px 24px 80px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    .story-inner {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .story-label {
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--terracotta-dark);
+      font-weight: 600;
+    }
+
+    .story h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 10vw, 58px);
+      line-height: 1;
+      font-weight: 500;
+      margin: 14px 0 20px;
+    }
+
+    .story p {
+      margin: 0 auto;
+      color: var(--brown-soft);
+      font-size: 15px;
+      line-height: 1.85;
+      max-width: 540px;
+    }
+
+    .moments {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 34px auto 0;
+      max-width: 540px;
+    }
+
+    .moment {
+      padding: 18px 8px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px;
+      background: var(--cream);
+    }
+
+    .thanks {
+      background: var(--terracotta);
+      color: #fff8ef;
+      padding: 72px 24px;
+      text-align: center;
+    }
+
+    .thanks h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(40px, 11vw, 62px);
+      font-weight: 500;
+      line-height: .95;
+      margin: 0 0 18px;
+    }
+
+    .thanks p {
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.75;
+      color: rgba(255,248,239,.86);
+      font-size: 15px;
+    }
+
+    footer {
+      background: var(--terracotta);
+      color: rgba(255,248,239,.68);
+      text-align: center;
+      padding: 0 24px 34px;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translate(-50%, 20px);
+      width: min(90vw, 440px);
+      background: var(--brown);
+      color: white;
+      border-radius: 16px;
+      padding: 16px 18px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+      opacity: 0;
+      pointer-events: none;
+      transition: all .25s ease;
+      z-index: 20;
+      box-shadow: 0 15px 40px rgba(0,0,0,.2);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (min-width: 700px) {
+      .top { min-height: 86vh; padding-top: 80px; }
+      .upload-btn { padding-left: 36px; padding-right: 36px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="top">
+      <div class="monogram">C&amp;C</div>
+      <div class="date">October 17, 2026</div>
+
+      <div class="eyebrow">Captured by you</div>
+      <h1>Help us capture the day.</h1>
+      <p class="intro">
+        We want to see Courtney &amp; Calen's wedding through your eyes.
+        Candid, blurry, beautiful, hilarious — we want it all.
+      </p>
+
+      <button class="upload-btn" id="uploadBtn" type="button">
+        📸 &nbsp; Upload Your Photos
+      </button>
+      <div class="hint">Select as many favorites as you'd like.</div>
+      <div class="divider"></div>
+    </section>
+
+    <section class="story">
+      <div class="story-inner">
+        <div class="story-label">The moments in between</div>
+        <h2>Don't let the little things disappear.</h2>
+        <p>
+          The dance floor. The champagne toast. The happy tears.
+          The photos nobody knew were being taken. Share the moments
+          you don't want Courtney &amp; Calen to forget.
+        </p>
+
+        <div class="moments">
+          <div class="moment">The laughs</div>
+          <div class="moment">The tears</div>
+          <div class="moment">The chaos</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="thanks">
+      <h2>You're part of the story.</h2>
+      <p>
+        Thank you for helping Courtney &amp; Calen build a wedding album
+        from all the moments that made October 17th unforgettable.
+      </p>
+    </section>
+
+    <footer>Courtney &amp; Calen · 10.17.2026</footer>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const cloudName = "do7stbpo";
+    const uploadPreset = "courtney-calen-wedding";
+
+    const widget = cloudinary.createUploadWidget(
+      {
+        cloudName,
+        uploadPreset,
+        sources: ["local", "camera"],
+        defaultSource: "local",
+        multiple: true,
+        maxFiles: 50,
+        clientAllowedFormats: ["image"],
+        maxImageFileSize: 20000000,
+        showAdvancedOptions: false,
+        showPoweredBy: false,
+        cropping: false,
+        resourceType: "image",
+        folder: "courtney-calen-wedding",
+        theme: "minimal",
+        styles: {
+          palette: {
+            window: "#fffaf3",
+            windowBorder: "#eadfce",
+            tabIcon: "#9b5b4d",
+            menuIcons: "#754338",
+            textDark: "#3d2b26",
+            textLight: "#fffaf3",
+            link: "#9b5b4d",
+            action: "#9b5b4d",
+            inactiveTabIcon: "#c58b82",
+            error: "#a33d32",
+            inProgress: "#9b5b4d",
+            complete: "#66805f",
+            sourceBg: "#f7f0e6"
+          }
+        }
+      },
+      (error, result) => {
+        if (error) {
+          console.error(error);
+          showToast("Something went wrong. Please try again.");
+          return;
+        }
+
+        if (result && result.event === "success") {
+          showToast("Photo uploaded! Keep going if you have more favorites. 🤎");
+        }
+
+        if (result && result.event === "queues-end") {
+          showToast("All your photos are uploaded. Thank you! 🥂");
+        }
+      }
+    );
+
+    document.getElementById("uploadBtn").addEventListener("click", () => {
+      widget.open();
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
