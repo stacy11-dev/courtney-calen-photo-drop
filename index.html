@@ -301,7 +301,7 @@
       <button class="upload-btn" id="uploadBtn" type="button">
         📸 &nbsp; Upload Your Photos
       </button>
-      <div class="hint">Select as many favorites as you'd like.</div>
+      <div class="hint">Photos up to 50 MB · Videos up to 50 MB</div>
       <div class="divider"></div>
     </section>
 
@@ -348,12 +348,12 @@
         defaultSource: "local",
         multiple: true,
         maxFiles: 50,
-        clientAllowedFormats: ["image"],
-        maxImageFileSize: 20000000,
+        clientAllowedFormats: ["jpg", "jpeg", "png", "heic", "heif", "webp", "mp4", "mov", "m4v"],
+        maxFileSize: 50000000,
         showAdvancedOptions: false,
         showPoweredBy: false,
         cropping: false,
-        resourceType: "image",
+        resourceType: "auto",
         folder: "courtney-calen-wedding",
         theme: "minimal",
         styles: {
