@@ -3,407 +3,396 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#9b5b4d">
-  <meta name="description" content="Share your favorite photos from Courtney & Calen's wedding.">
+  <meta name="theme-color" content="#f7efe4">
+  <meta name="description" content="Share your favorite photos and videos from Courtney & Calen's wedding.">
   <title>Courtney & Calen | Captured by You</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
   <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
 
   <style>
-    :root {
-      --cream: #f7f0e6;
-      --cream-deep: #eadfce;
-      --terracotta: #9b5b4d;
-      --terracotta-dark: #754338;
-      --rose: #c58b82;
-      --brown: #3d2b26;
-      --brown-soft: #6d5750;
-      --white: #fffaf3;
-      --line: rgba(61,43,38,.16);
+    :root{
+      --cream:#f7efe4;
+      --cream2:#fbf6ee;
+      --terracotta:#a9614d;
+      --rose:#b98277;
+      --brown:#392a24;
+      --muted:#746057;
+      --sage:#707a62;
+      --gold:#b08a5c;
+      --line:rgba(57,42,36,.18);
     }
 
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--cream);
-      color: var(--brown);
-      font-family: "DM Sans", sans-serif;
-      -webkit-font-smoothing: antialiased;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--cream);
+      color:var(--brown);
+      font-family:"DM Sans",sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    .page{min-height:100vh;overflow:hidden}
+    .hero{
+      min-height:100vh;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      padding:48px 22px 34px;
+      overflow:hidden;
     }
 
-    .page {
-      min-height: 100svh;
-      overflow: hidden;
-      position: relative;
+    /* Decorative botanical clusters */
+    .floral{
+      position:absolute;
+      pointer-events:none;
+      z-index:0;
+    }
+    .floral.top-right{width:190px;height:245px;right:-18px;top:-10px}
+    .floral.bottom-left{width:270px;height:205px;left:-34px;bottom:-28px}
+    .floral.bottom-right{width:245px;height:170px;right:-32px;bottom:-24px;transform:scaleX(-1)}
+    .floral path{fill:none;stroke:var(--sage);stroke-width:2.2;stroke-linecap:round}
+    .floral .stem2{stroke:var(--gold);stroke-width:1.5}
+    .floral .leaf{fill:#7b8068;stroke:none}
+    .floral .leaf2{fill:#9a9d7c;stroke:none}
+    .floral .rose{fill:var(--rose);stroke:#8d625b;stroke-width:1}
+    .floral .rose-light{fill:#d4a79d;stroke:#a67a72;stroke-width:1}
+    .floral .cream{fill:#eee0c9;stroke:#b69b77;stroke-width:1}
+    .floral .berry{fill:#a9614d;stroke:none}
+
+    .content{position:relative;z-index:2;max-width:650px;width:100%}
+    .monogram{
+      font-family:"Cormorant Garamond",serif;
+      font-size:58px;
+      line-height:.85;
+      font-weight:500;
+      letter-spacing:-.06em;
+      margin-top:8px;
+    }
+    .date{
+      margin-top:18px;
+      font-size:11px;
+      letter-spacing:.34em;
+      text-transform:uppercase;
+      color:var(--muted);
+      padding-left:.34em;
+    }
+    .tiny-rule{
+      width:76px;height:1px;background:var(--line);
+      margin:20px auto 0;position:relative
+    }
+    .tiny-rule:after{
+      content:"♥";
+      position:absolute;
+      left:50%;top:50%;
+      transform:translate(-50%,-54%);
+      background:var(--cream);
+      padding:0 8px;
+      color:var(--terracotta);
+      font-size:12px;
+    }
+    .eyebrow{
+      margin-top:56px;
+      color:var(--terracotta);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+    }
+    h1{
+      font-family:"Cormorant Garamond",serif;
+      font-weight:500;
+      font-size:clamp(57px,16vw,92px);
+      line-height:.84;
+      letter-spacing:-.025em;
+      margin:11px 0 14px;
+      text-transform:uppercase;
+    }
+    .script{
+      font-family:"Parisienne",cursive;
+      color:var(--terracotta);
+      font-size:clamp(27px,7vw,39px);
+      line-height:1;
+      margin:-2px 0 4px;
+    }
+    .copy{
+      max-width:430px;
+      margin:0 auto;
+      color:var(--muted);
+      font-family:"Cormorant Garamond",serif;
+      font-size:19px;
+      line-height:1.35;
+    }
+    .camera{
+      width:40px;height:30px;
+      margin:26px auto 12px;
+      position:relative;
+      color:var(--terracotta);
+    }
+    .camera .body{
+      position:absolute;inset:4px 0 0;
+      border:2px solid currentColor;border-radius:6px;
+    }
+    .camera .top{
+      position:absolute;left:8px;top:0;
+      width:13px;height:7px;
+      border:2px solid currentColor;border-bottom:0;
+      border-radius:3px 3px 0 0;
+    }
+    .camera .lens{
+      position:absolute;left:13px;top:9px;
+      width:12px;height:12px;border:2px solid currentColor;border-radius:50%;
+    }
+    .camera .dot{
+      position:absolute;right:6px;top:8px;width:4px;height:4px;border-radius:50%;background:currentColor;
+    }
+    .instruction{
+      font-family:"Cormorant Garamond",serif;
+      font-size:20px;
+      margin:0 auto 22px;
+    }
+    .upload{
+      appearance:none;
+      border:0;
+      width:min(100%,410px);
+      min-height:56px;
+      padding:17px 24px;
+      background:var(--terracotta);
+      color:#fffaf3;
+      border-radius:2px;
+      font:600 12px "DM Sans",sans-serif;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      cursor:pointer;
+      box-shadow:0 12px 26px rgba(105,57,45,.14);
+    }
+    .upload:active{transform:translateY(1px)}
+    .subhint{
+      margin-top:11px;
+      font-size:10px;
+      color:var(--muted);
+      letter-spacing:.04em;
+    }
+    .thankyou{
+      font-family:"Parisienne",cursive;
+      color:var(--terracotta);
+      font-size:27px;
+      margin-top:23px;
     }
 
-    .top {
-      min-height: 92svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 64px 24px 48px;
-      position: relative;
+    .lower{
+      background:var(--cream2);
+      border-top:1px solid var(--line);
+      padding:68px 24px 76px;
+      text-align:center;
     }
-
-    .top::before,
-    .top::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(1px);
+    .lower-inner{max-width:600px;margin:auto}
+    .lower .label{
+      color:var(--terracotta);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.25em;
+      text-transform:uppercase;
     }
-
-    .top::before {
-      width: 280px;
-      height: 280px;
-      right: -150px;
-      top: 90px;
-      background: rgba(197,139,130,.20);
+    .lower h2{
+      font:500 clamp(37px,10vw,56px)/.95 "Cormorant Garamond",serif;
+      margin:13px 0 17px;
     }
-
-    .top::after {
-      width: 300px;
-      height: 300px;
-      left: -180px;
-      bottom: -80px;
-      background: rgba(155,91,77,.12);
+    .lower p{
+      margin:0 auto;
+      max-width:500px;
+      color:var(--muted);
+      font:18px/1.45 "Cormorant Garamond",serif;
     }
-
-    .monogram {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(54px, 17vw, 92px);
-      line-height: .78;
-      letter-spacing: -.05em;
-      font-weight: 500;
-      position: relative;
-      z-index: 1;
+    .chips{
+      display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:27px
     }
-
-    .date {
-      margin-top: 20px;
-      font-size: 12px;
-      letter-spacing: .30em;
-      text-transform: uppercase;
-      color: var(--brown-soft);
-      position: relative;
-      z-index: 1;
+    .chip{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:9px 14px;
+      color:var(--brown);
+      font-size:10px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      background:var(--cream);
     }
-
-    .eyebrow {
-      margin-top: 64px;
-      font-size: 11px;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      color: var(--terracotta-dark);
-      font-weight: 600;
-      position: relative;
-      z-index: 1;
+    footer{
+      background:var(--cream2);
+      text-align:center;
+      padding:0 24px 30px;
+      color:var(--muted);
+      font-size:9px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
     }
-
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      font-size: clamp(48px, 13vw, 78px);
-      line-height: .92;
-      margin: 12px 0 18px;
-      max-width: 720px;
-      position: relative;
-      z-index: 1;
+    .toast{
+      position:fixed;left:50%;bottom:20px;z-index:20;
+      transform:translate(-50%,20px);
+      width:min(90vw,430px);
+      background:var(--brown);color:#fff;
+      border-radius:12px;padding:14px 16px;
+      font-size:12px;line-height:1.45;text-align:center;
+      opacity:0;pointer-events:none;transition:.25s ease;
+      box-shadow:0 12px 35px rgba(0,0,0,.22)
     }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
 
-    .intro {
-      max-width: 520px;
-      margin: 0 auto;
-      color: var(--brown-soft);
-      font-size: 16px;
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-    }
-
-    .upload-btn {
-      margin-top: 34px;
-      border: 0;
-      border-radius: 999px;
-      background: var(--terracotta);
-      color: white;
-      padding: 17px 28px;
-      font: 600 12px "DM Sans", sans-serif;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 14px 30px rgba(117,67,56,.18);
-      transition: transform .2s ease, background .2s ease;
-      position: relative;
-      z-index: 1;
-    }
-
-    .upload-btn:active { transform: translateY(1px) scale(.99); }
-    .upload-btn:hover { background: var(--terracotta-dark); }
-
-    .hint {
-      margin-top: 13px;
-      font-size: 12px;
-      color: var(--brown-soft);
-      position: relative;
-      z-index: 1;
-    }
-
-    .divider {
-      width: 42px;
-      height: 1px;
-      background: var(--rose);
-      margin: 12px auto 0;
-    }
-
-    .story {
-      background: var(--white);
-      padding: 72px 24px 80px;
-      text-align: center;
-      border-top: 1px solid var(--line);
-    }
-
-    .story-inner {
-      max-width: 650px;
-      margin: auto;
-    }
-
-    .story-label {
-      font-size: 10px;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--terracotta-dark);
-      font-weight: 600;
-    }
-
-    .story h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(36px, 10vw, 58px);
-      line-height: 1;
-      font-weight: 500;
-      margin: 14px 0 20px;
-    }
-
-    .story p {
-      margin: 0 auto;
-      color: var(--brown-soft);
-      font-size: 15px;
-      line-height: 1.85;
-      max-width: 540px;
-    }
-
-    .moments {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 34px auto 0;
-      max-width: 540px;
-    }
-
-    .moment {
-      padding: 18px 8px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 18px;
-      background: var(--cream);
-    }
-
-    .thanks {
-      background: var(--terracotta);
-      color: #fff8ef;
-      padding: 72px 24px;
-      text-align: center;
-    }
-
-    .thanks h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(40px, 11vw, 62px);
-      font-weight: 500;
-      line-height: .95;
-      margin: 0 0 18px;
-    }
-
-    .thanks p {
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.75;
-      color: rgba(255,248,239,.86);
-      font-size: 15px;
-    }
-
-    footer {
-      background: var(--terracotta);
-      color: rgba(255,248,239,.68);
-      text-align: center;
-      padding: 0 24px 34px;
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 22px;
-      transform: translate(-50%, 20px);
-      width: min(90vw, 440px);
-      background: var(--brown);
-      color: white;
-      border-radius: 16px;
-      padding: 16px 18px;
-      text-align: center;
-      font-size: 13px;
-      line-height: 1.5;
-      opacity: 0;
-      pointer-events: none;
-      transition: all .25s ease;
-      z-index: 20;
-      box-shadow: 0 15px 40px rgba(0,0,0,.2);
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-
-    @media (min-width: 700px) {
-      .top { min-height: 86vh; padding-top: 80px; }
-      .upload-btn { padding-left: 36px; padding-right: 36px; }
+    @media(max-width:390px){
+      .hero{padding-top:36px}
+      .floral.top-right{width:155px;height:200px}
+      .floral.bottom-left{width:230px;height:175px}
+      h1{font-size:52px}
+      .eyebrow{margin-top:48px}
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
-    <section class="top">
-      <div class="monogram">C&amp;C</div>
-      <div class="date">October 17, 2026</div>
+<main class="page">
+  <section class="hero">
+    <svg class="floral top-right" viewBox="0 0 220 280" aria-hidden="true">
+      <path d="M205 4C170 45 153 84 137 122C118 165 91 207 44 260"/>
+      <path class="stem2" d="M200 24C178 62 177 94 164 126C150 160 129 187 108 207"/>
+      <ellipse class="leaf" cx="163" cy="63" rx="10" ry="23" transform="rotate(37 163 63)"/>
+      <ellipse class="leaf2" cx="148" cy="92" rx="9" ry="22" transform="rotate(-42 148 92)"/>
+      <ellipse class="leaf" cx="128" cy="126" rx="10" ry="24" transform="rotate(35 128 126)"/>
+      <ellipse class="leaf2" cx="111" cy="153" rx="9" ry="21" transform="rotate(-43 111 153)"/>
+      <ellipse class="leaf" cx="89" cy="188" rx="10" ry="23" transform="rotate(38 89 188)"/>
+      <circle class="rose" cx="177" cy="48" r="18"/><circle class="rose-light" cx="178" cy="48" r="11"/><circle class="cream" cx="177" cy="48" r="5"/>
+      <circle class="cream" cx="143" cy="80" r="13"/><circle class="rose-light" cx="143" cy="80" r="8"/>
+      <circle class="rose" cx="121" cy="115" r="15"/><circle class="cream" cx="121" cy="115" r="7"/>
+      <path class="stem2" d="M189 27C197 14 205 10 215 8M159 77C174 68 185 67 196 71M118 116C103 103 94 96 86 83"/>
+    </svg>
+
+    <svg class="floral bottom-left" viewBox="0 0 300 230" aria-hidden="true">
+      <path d="M12 222C62 190 91 165 118 132C144 100 175 70 253 22"/>
+      <path class="stem2" d="M42 205C80 182 101 153 129 122C151 98 182 70 225 49"/>
+      <ellipse class="leaf" cx="86" cy="172" rx="9" ry="24" transform="rotate(52 86 172)"/>
+      <ellipse class="leaf2" cx="109" cy="146" rx="8" ry="21" transform="rotate(-48 109 146)"/>
+      <ellipse class="leaf" cx="139" cy="111" rx="10" ry="25" transform="rotate(43 139 111)"/>
+      <ellipse class="leaf2" cx="168" cy="87" rx="8" ry="20" transform="rotate(-45 168 87)"/>
+      <ellipse class="leaf" cx="201" cy="60" rx="9" ry="23" transform="rotate(47 201 60)"/>
+      <circle class="rose" cx="64" cy="191" r="25"/><circle class="rose-light" cx="64" cy="191" r="16"/><circle class="cream" cx="64" cy="191" r="7"/>
+      <circle class="cream" cx="102" cy="155" r="18"/><circle class="rose-light" cx="102" cy="155" r="11"/>
+      <circle class="rose" cx="141" cy="113" r="20"/><circle class="rose-light" cx="141" cy="113" r="12"/><circle class="cream" cx="141" cy="113" r="6"/>
+      <circle class="cream" cx="178" cy="82" r="14"/>
+      <path class="stem2" d="M71 169C54 152 45 138 42 123M117 134C101 120 93 105 91 91M155 99C145 84 143 70 146 57"/>
+    </svg>
+
+    <svg class="floral bottom-right" viewBox="0 0 270 190" aria-hidden="true">
+      <path d="M16 183C72 153 103 127 133 95C163 63 202 42 258 20"/>
+      <ellipse class="leaf" cx="93" cy="139" rx="9" ry="23" transform="rotate(48 93 139)"/>
+      <ellipse class="leaf2" cx="119" cy="111" rx="8" ry="21" transform="rotate(-44 119 111)"/>
+      <ellipse class="leaf" cx="151" cy="82" rx="9" ry="23" transform="rotate(45 151 82)"/>
+      <ellipse class="leaf2" cx="181" cy="61" rx="8" ry="20" transform="rotate(-43 181 61)"/>
+      <circle class="rose" cx="60" cy="155" r="19"/><circle class="cream" cx="60" cy="155" r="9"/>
+      <circle class="cream" cx="112" cy="110" r="16"/><circle class="rose-light" cx="112" cy="110" r="9"/>
+      <circle class="rose" cx="166" cy="72" r="18"/><circle class="rose-light" cx="166" cy="72" r="11"/>
+    </svg>
+
+    <div class="content">
+      <div class="monogram">C &amp; C</div>
+      <div class="date">10.17.2026</div>
+      <div class="tiny-rule"></div>
 
       <div class="eyebrow">Captured by you</div>
-      <h1>Help us capture the day.</h1>
-      <p class="intro">
-        We want to see Courtney &amp; Calen's wedding through your eyes.
-        Candid, blurry, beautiful, hilarious — we want it all.
-      </p>
+      <h1>Captured<br>by you</h1>
+      <div class="script">help us tell the story</div>
+      <div class="copy">of our wedding day</div>
 
-      <button class="upload-btn" id="uploadBtn" type="button">
-        📸 &nbsp; Upload Your Photos
-      </button>
-      <div class="hint">Photos up to 50 MB · Videos up to 50 MB</div>
-      <div class="divider"></div>
-    </section>
-
-    <section class="story">
-      <div class="story-inner">
-        <div class="story-label">The moments in between</div>
-        <h2>Don't let the little things disappear.</h2>
-        <p>
-          The dance floor. The champagne toast. The happy tears.
-          The photos nobody knew were being taken. Share the moments
-          you don't want Courtney &amp; Calen to forget.
-        </p>
-
-        <div class="moments">
-          <div class="moment">The laughs</div>
-          <div class="moment">The tears</div>
-          <div class="moment">The chaos</div>
-        </div>
+      <div class="camera" aria-hidden="true">
+        <div class="top"></div><div class="body"></div><div class="lens"></div><div class="dot"></div>
       </div>
-    </section>
 
-    <section class="thanks">
-      <h2>You're part of the story.</h2>
-      <p>
-        Thank you for helping Courtney &amp; Calen build a wedding album
-        from all the moments that made October 17th unforgettable.
-      </p>
-    </section>
+      <p class="instruction">We can't wait to see our day<br>through your eyes!</p>
 
-    <footer>Courtney &amp; Calen · 10.17.2026</footer>
-  </main>
+      <button class="upload" id="uploadBtn" type="button">Upload your photos &amp; videos</button>
+      <div class="subhint">Photos &amp; videos up to 50 MB each</div>
+      <div class="thankyou">thank you! ♡</div>
+    </div>
+  </section>
 
-  <div class="toast" id="toast"></div>
+  <section class="lower">
+    <div class="lower-inner">
+      <div class="label">A little piece of the day</div>
+      <h2>The moments we might miss.</h2>
+      <p>From the happy tears to the dance-floor chaos, share the candid moments, little details, and memories you want Courtney &amp; Calen to have forever.</p>
+      <div class="chips">
+        <span class="chip">The laughs</span>
+        <span class="chip">The tears</span>
+        <span class="chip">The memories</span>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    const cloudName = "do7stbpo";
-    const uploadPreset = "courtney-calen-wedding";
+  <footer>Courtney &amp; Calen · October 17, 2026</footer>
+</main>
 
-    const widget = cloudinary.createUploadWidget(
-      {
-        cloudName,
-        uploadPreset,
-        sources: ["local", "camera"],
-        defaultSource: "local",
-        multiple: true,
-        maxFiles: 50,
-        clientAllowedFormats: ["jpg", "jpeg", "png", "heic", "heif", "webp", "mp4", "mov", "m4v"],
-        maxFileSize: 50000000,
-        showAdvancedOptions: false,
-        showPoweredBy: false,
-        cropping: false,
-        resourceType: "auto",
-        folder: "courtney-calen-wedding",
-        theme: "minimal",
-        styles: {
-          palette: {
-            window: "#fffaf3",
-            windowBorder: "#eadfce",
-            tabIcon: "#9b5b4d",
-            menuIcons: "#754338",
-            textDark: "#3d2b26",
-            textLight: "#fffaf3",
-            link: "#9b5b4d",
-            action: "#9b5b4d",
-            inactiveTabIcon: "#c58b82",
-            error: "#a33d32",
-            inProgress: "#9b5b4d",
-            complete: "#66805f",
-            sourceBg: "#f7f0e6"
-          }
-        }
-      },
-      (error, result) => {
-        if (error) {
-          console.error(error);
-          showToast("Something went wrong. Please try again.");
-          return;
-        }
+<div class="toast" id="toast" aria-live="polite"></div>
 
-        if (result && result.event === "success") {
-          showToast("Photo uploaded! Keep going if you have more favorites. 🤎");
-        }
-
-        if (result && result.event === "queues-end") {
-          showToast("All your photos are uploaded. Thank you! 🥂");
+<script>
+  const widget = cloudinary.createUploadWidget(
+    {
+      cloudName: "do7stbpo",
+      uploadPreset: "courtney-calen-wedding",
+      sources: ["local", "camera"],
+      defaultSource: "local",
+      multiple: true,
+      maxFiles: 50,
+      clientAllowedFormats: ["jpg","jpeg","png","heic","heif","webp","mp4","mov","m4v"],
+      maxFileSize: 50000000,
+      resourceType: "auto",
+      showAdvancedOptions: false,
+      showPoweredBy: false,
+      cropping: false,
+      theme: "minimal",
+      styles: {
+        palette: {
+          window: "#fbf6ee",
+          windowBorder: "#dfcdb9",
+          tabIcon: "#a9614d",
+          menuIcons: "#6f5a51",
+          textDark: "#392a24",
+          textLight: "#fbf6ee",
+          link: "#a9614d",
+          action: "#a9614d",
+          inactiveTabIcon: "#b98277",
+          error: "#a33d32",
+          inProgress: "#a9614d",
+          complete: "#707a62",
+          sourceBg: "#f7efe4"
         }
       }
-    );
-
-    document.getElementById("uploadBtn").addEventListener("click", () => {
-      widget.open();
-    });
-
-    function showToast(message) {
-      const toast = document.getElementById("toast");
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 4000);
+    },
+    (error, result) => {
+      if (error) {
+        console.error(error);
+        showToast("Something went wrong. Please try again.");
+        return;
+      }
+      if (result && result.event === "success") {
+        showToast("Uploaded! Keep going if you have more favorites. 🤎");
+      }
+      if (result && result.event === "queues-end") {
+        showToast("Everything is uploaded. Thank you! 🥂");
+      }
     }
-  </script>
+  );
+
+  document.getElementById("uploadBtn").addEventListener("click", () => widget.open());
+
+  function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 4000);
+  }
+</script>
 </body>
 </html>
