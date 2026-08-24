@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap" rel="stylesheet">
 
   <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
 
@@ -46,7 +48,7 @@
     }
 
     .top {
-      min-height: 92svh;
+      min-height: 90svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -54,31 +56,6 @@
       text-align: center;
       padding: 64px 24px 48px;
       position: relative;
-    }
-
-    .top::before,
-    .top::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(1px);
-    }
-
-    .top::before {
-      width: 280px;
-      height: 280px;
-      right: -150px;
-      top: 90px;
-      background: rgba(197,139,130,.20);
-    }
-
-    .top::after {
-      width: 300px;
-      height: 300px;
-      left: -180px;
-      bottom: -80px;
-      background: rgba(155,91,77,.12);
     }
 
     .monogram {
@@ -90,6 +67,12 @@
       position: relative;
       z-index: 1;
     }
+	  
+	  .oooh-baby-regular {
+  font-family: "Oooh Baby", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 
     .date {
       margin-top: 20px;
@@ -115,10 +98,10 @@
     h1 {
       font-family: "Cormorant Garamond", serif;
       font-weight: 500;
-      font-size: clamp(48px, 13vw, 78px);
+      font-size: clamp(42px, 13vw, 78px);
       line-height: .92;
       margin: 12px 0 18px;
-      max-width: 720px;
+      max-width: 650px;
       position: relative;
       z-index: 1;
     }
@@ -127,7 +110,7 @@
       max-width: 520px;
       margin: 0 auto;
       color: var(--brown-soft);
-      font-size: 16px;
+      font-size: 14px;
       line-height: 1.7;
       position: relative;
       z-index: 1;
@@ -164,7 +147,7 @@
     .thank-you {
   margin-top: 18px;
   color: #a9614d;
-  font-family: "Allura", cursive;
+  font-family: "Oooh Baby", cursive;
   font-size: 29px;
   line-height: 1.2;
 }
@@ -301,7 +284,7 @@
       <div class="date">October 17, 2026</div>
 
       <div class="eyebrow">Captured by you</div>
-      <h1>Help us capture the day.</h1>
+      <h1>THE MOMENTS WE MISSED</h1>
       <p class="intro">
         We want to see Courtney &amp; Calen's wedding through your eyes.
       </p>
@@ -311,24 +294,8 @@
       </button>
       <div class="hint">Photos up to 10 MB · Videos up to 50 MB</div>
       <div class="divider"></div>
-      <div class="thank-you">Thank you for being part of our day.<br>Love, Courtney &amp; Calen</div>
-    </section>
-
-    <section class="story">
-      <div class="story-inner">
-        <div class="story-label">The moments in between</div>
-        <h2>Don't let the little things disappear.</h2>
-        <p>
-          The dance floor. The champagne toast. The happy tears.
-          The photos nobody knew were being taken. Share the moments
-          you don't want Courtney &amp; Calen to forget.
-        </p>
-
-        <div class="moments">
-          <div class="moment">The laughs</div>
-          <div class="moment">The tears</div>
-          <div class="moment">The chaos</div>
-        </div>
+      <div class="thank-you">
+        <p>Thank you for being part of our day.</p>
       </div>
     </section>
 
@@ -345,7 +312,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script>
+<script>
     const cloudName = "do7stbpo";
     const uploadPreset = "courtney-calen-wedding";
 
